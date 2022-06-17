@@ -4,7 +4,7 @@
 
 # What is docker?
 
-- What is a containers
+- What are containers
 - Docker image
 - Docker Dockerfile
 - Docker daemon/service

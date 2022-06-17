@@ -1,7 +1,5 @@
 # mars_hill_docker
 
-# mars_hill_docker
-
 # Intro
 
 # What is docker?

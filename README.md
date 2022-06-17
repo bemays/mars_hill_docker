@@ -2,11 +2,11 @@
 
 # Intro
 
-![docker-logo](res/docker-logo.png)
+![docker-logo](res/docker-logo.png =250x)
 
 # What is docker?
 
-![container-img](res/container.jpg)
+![container-img](res/container.jpg =250x)
 
 - What are containers
 - Docker image

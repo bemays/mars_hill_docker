@@ -102,9 +102,11 @@ enable - start at boot (disable to reverse)
 
 build & run
 
-```FROM ubuntu:latest
+```
+FROM ubuntu:latest
 
-CMD ["echo", "Hello, World"]```
+CMD ["echo", "Hello, World"]
+```
 
 
 
@@ -146,7 +148,8 @@ set name
 
 Dockerfile
 
-```FROM python:3.10
+```
+FROM python:3.10
 
 
 
@@ -158,15 +161,18 @@ RUN pip install -r requirements.txt
 
 ADD iris.py .
 
-CMD ["python3.10","iris.py"]```
+CMD ["python3.10","iris.py"]
+```
 
 
 
 
 
-```docker build -t irisapp .
+```
+docker build -t irisapp .
 
-docker run irisapp```
+docker run irisapp
+```
 
 or
 

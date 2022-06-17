@@ -2,13 +2,19 @@
 
 # Intro
 
+![docker-logo](docker-logo.png)
+
 # What is docker?
+
+![container-img](container.jpg)
 
 - What are containers
 - Docker image
 - Docker Dockerfile
 - Docker daemon/service
 - Docker CLI/GUI
+
+![cargoship-logo](cargoship.jpg)
 
 # Installing/setting up Docker
 
@@ -26,7 +32,7 @@
 
 ### Arch
 
-### Build from code
+### Build from source
 
 ## Notes on root privilege
 
@@ -53,7 +59,9 @@
 
 # Deploying and managing images, containers
 
-# Dockerhub
+# Docker hub
+
+![docker-hub-logo](docker-hub-logo.png)
 
 - create account
 - pull
@@ -65,6 +73,8 @@
 - SQL
 - webserver
 - etc
+
+# Docker & Databricks
 
 # Docker alternatives
 

@@ -2,11 +2,11 @@
 
 # Intro
 
-![docker-logo](docker-logo.png)
+![docker-logo](res/docker-logo.png)
 
 # What is docker?
 
-![container-img](container.jpg)
+![container-img](res/container.jpg)
 
 - What are containers
 - Docker image
@@ -14,7 +14,7 @@
 - Docker daemon/service
 - Docker CLI/GUI
 
-![cargoship-logo](cargoship.jpg)
+![cargoship-logo](res/cargoship.jpg)
 
 # Installing/setting up Docker
 
@@ -61,7 +61,7 @@
 
 # Docker hub
 
-![docker-hub-logo](docker-hub-logo.png)
+![docker-hub-logo](res/docker-hub-logo.png)
 
 - create account
 - pull

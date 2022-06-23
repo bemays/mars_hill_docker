@@ -1,5 +1,5 @@
 # Intro to Docker
-- Docker is an application that allows you to create containers for applications or software. It puts everything an app needs to run into a simple imgae.
+- Docker is an application that allows you to create containers for applications or software. It puts everything an app needs to run into a simple image.
 
 - Docker has a platform similar to GitHub where people can push their apps and others can pull them.
 
@@ -24,19 +24,6 @@ COPY . /app
 RUN pip install -r requirements.txt
 
 CMD ["python3.10","iris.py"]
-```
-
-```
-FROM continuumio/miniconda3:4.10.3p1
-RUN conda install \
-    xarray \ 
-    netCDF4 \ 
-    bottleneck \
-    numpy \
-    pandas \
-    matplotlib \
-    jupyterlab
-CMD ["jupyter-lab","--ip=0.0.0.0","--no-browser","--allow-root"]
 ```
 
 #### FROM
@@ -106,4 +93,3 @@ CMD ["jupyter-lab","--ip=0.0.0.0","--no-browser","--allow-root"]
 - In order to use docker with VS code you need to download two extensions.
   - "Docker" and "Remote - Containers"
 
-- Go to "Command Palette" to see options.

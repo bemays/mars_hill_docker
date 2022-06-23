@@ -1,216 +1,97 @@
-# mars_hill_docker
+# Intro to Docker
+- Docker is an application that allows you to create containers for applications or software. It puts everything an app needs to run into a simple imgae.
 
-# Intro
+- Docker has a platform similar to GitHub where people can push their apps and others can pull them.
 
-<img src="res/docker-logo.png" width="260">
+- Docker allows for consistent performace because all dependencies are tested before pushing.
 
-# What is docker?
+# How does it work?
 
+![](res/image1.jpg)
 
-- What are containers
-<img src="res/container.jpg" width="260">
-A container is a standard package of software and all of its dependencies included. They are designed to be shared and deployed anywhere. Docker containers are based on LXC (Linux containers). LCX is an operating system level virtualization method for running multiple isolated Linux systems (containers). Docker took this technology and created easy to use tools to allow anyone to create, deploy, and manage multiple containers.
+## Dockerfile
+- It starts with writing a dockerfile. This is a text file, __do not add extension__ only "Dockerfile", that contains the base information the app needs to run.
 
-<img src="res/docker-container.png">
-
-- Docker image & dockerfiles
-
-A docker images is ...... These are created using Dockerfiles.
-
-- Docker daemon/service
-
-The Docker daemon is a service running in the background to maintain all running docker containers. ......
-
-- Docker CLI/GUI
-
-There is both a CLI and GUI used for controlling the docker daemon, building docker images, and deploying docker containers.
-
-![cargoship-logo](res/cargoship.jpg)
-
-# Installing/setting up Docker
-
-## Windows
-
-## Mac
-
-## Linux
-
-### Debian
-
-### Ubuntu
-
-### Fedora
-
-### Arch
-
-### Build from source
-
-## Notes on root privilege
-
-By defualt docker requires root privileges to run anything. This is because it has access to the computers ports. With this said, you may not want Docker to have root privileges.
-
-run without root
-
-`sudo groupadd docker`
-
-`sudo usermod -aG docker $USER`
-
-login in and out of shell
-
-permission for sockets
-
-`sudo chown root:docker /var/run/docker.sock`
-
-`sudo chown -R root:docker /var/run/docker`
-
-ubuntu snap for permissions
-
-`sudo snap connect docker:home :home`
-
-# Basic CLI commands
-
-- version
-- log
-- ....
-
-history
-
-`docker ps -a`
-
-
-# Docker GUI (how to use)
-
-# Docker daemon/service
-
-- start
-- status
-- restart
-- start on boot
-
-service name:
-
-docker.service
-
-snap.docker.dockerd.service
-
-systemctl enable, start, restart, status (service)
-
-enable - start at boot (disable to reverse)
-
-
-# Dockerfile and Building an image
-
-build & run
-
-```
-FROM ubuntu:latest
-
-CMD ["echo", "Hello, World"]
-```
-
-
-
-`docker build -t echoapp .`
-
-`docker run echoapp`
-
-- write up example dockerfile, build it
-- "build" cmd
-- "run" cmd
-
-- disable root
-
-by defualt things are ran as root
-
-`docker run --rm ubuntu whoami`
-
-`docker run --rm -u 9000 ubuntu whoami`
-
-
-# Deploying and managing images, containers
-
-
-deploy, view and stop containers
-
-`docker run --rm nginx`
-
-`docker ps`
-
-`docker kill (ID/NAME)`
-
-
-set name
-
-`docker run -d --name container_name app_name`
-
-
-# Iris
-
-Dockerfile
+- In most cases, we do not need to worry about this because the images we will use are already made for us.
 
 ```
 FROM python:3.10
 
-
-
-ADD requirements.txt .
+COPY . /app
 
 RUN pip install -r requirements.txt
-
-
-
-ADD iris.py .
 
 CMD ["python3.10","iris.py"]
 ```
 
-
-
-
-
 ```
-docker build -t irisapp .
-
-docker run irisapp
+FROM continuumio/miniconda3:4.10.3p1
+RUN conda install \
+    xarray \ 
+    netCDF4 \ 
+    bottleneck \
+    numpy \
+    pandas \
+    matplotlib \
+    jupyterlab
+CMD ["jupyter-lab","--ip=0.0.0.0","--no-browser","--allow-root"]
 ```
 
-or
+#### FROM
+- The FROM clause takes an exsisting image from dockerhub as the base image to build your app off of.
 
-`docker build .`
+- It is good practice to pick the most basic software your app needs
 
+#### COPY
+- This is where we add files we need inside the container. 
 
+- The "." selects everything inside the directory the dockerfile is located, then adds them to /app directory in the container.
 
-`CMD ["python3.10","iris.py"]`
+#### RUN
+- This is a command that is run when docker builds the image. It is usually the command to install other software you need for the app.
 
-`RUN python3.10 iris.py`
+#### CMD
+- When the container is done being built, this is the commmand that will deploy whatever you want it to do.
 
+### `docker build` 
+- This is the command that initializes the building of the image from the dockerfile.
+- This is also where you can name you own custom image.
+- It is important to run this command in the directory with the dockerfile
 
-# Docker hub
+## Images
+- A docker image is what is created from the dockerfile.
+- This is the packaged software that can be downloaded and ran quickly.
+- Think of it as a template for the app.
 
-![docker-hub-logo](res/docker-hub-logo.png)
+#### Pull and Push
+- `docker pull` is used to pull exsisting images from dockerhub
+- `docker push` if you created an image from a dockerfile, this command is used to push it to dockerhub
 
-- create account
-- pull
-- run
+## Containers 
+- When you pull an image from dockerhub, you can run it to create a container.
+- A new container is created and it becomes your own software.
+- It is ran side by side to your operating system. Extremely lightweight
 
-docker login
+#### `docker run`
+- This command creates a __new__ container from an exsisting image. 
+- This is where some important flags or commands are needed to customize an image.
+- It will also automatically start running
 
-docker push jarreed0/ml:tagname
+#### `docker stop`
+- This command stops a container
 
-docker pull jarreed0/ml:flightsmlapp
+#### `docker start`
+- This commands start an exsisting container
 
+## Best Practices and Commands
 
-# Use cases
+#### `docker ps`
+- This command will list containers being run currently
+- Adding the `-a` will list all containers 
 
-- ML
-- SQL
-- webserver
-- etc
+#### `docker rm {NAME}`
+- This will remove the container with the name entered
 
-# Docker & Databricks
-
-# Docker alternatives
-
-# Docker/containers vs VM
-
-# References/resources
+#### `docker exec`
+- This is a powerful command that is useful when you need to enter into the container.
+- You may need to find the exact command your container needs to run.

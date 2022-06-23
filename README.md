@@ -3,7 +3,9 @@
 
 - Docker has a platform similar to GitHub where people can push their apps and others can pull them.
 
-- Docker allows for consistent performace because all dependencies are tested before pushing.
+- Docker allows for consistent performance because all dependencies are tested before pushing.
+
+- Docker images can be deployed in a cloud enviroment such as Azure to host a website.
 
 # How does it work?
 
@@ -53,7 +55,7 @@ CMD ["jupyter-lab","--ip=0.0.0.0","--no-browser","--allow-root"]
 #### CMD
 - When the container is done being built, this is the commmand that will deploy whatever you want it to do.
 
-### `docker build` 
+### `docker build {OPTIONS}` 
 - This is the command that initializes the building of the image from the dockerfile.
 - This is also where you can name you own custom image.
 - It is important to run this command in the directory with the dockerfile
@@ -64,34 +66,44 @@ CMD ["jupyter-lab","--ip=0.0.0.0","--no-browser","--allow-root"]
 - Think of it as a template for the app.
 
 #### Pull and Push
-- `docker pull` is used to pull exsisting images from dockerhub
-- `docker push` if you created an image from a dockerfile, this command is used to push it to dockerhub
+- `docker pull {OPTIONS}` is used to pull exsisting images from dockerhub
+- `docker push {OPTIONS}` if you created an image from a dockerfile, this command is used to push it to dockerhub
 
 ## Containers 
 - When you pull an image from dockerhub, you can run it to create a container.
 - A new container is created and it becomes your own software.
 - It is ran side by side to your operating system. Extremely lightweight
 
-#### `docker run`
+#### `docker run {OPTIONS}`
 - This command creates a __new__ container from an exsisting image. 
-- This is where some important flags or commands are needed to customize an image.
 - It will also automatically start running
+- This is where some important flags or commands are needed to customize an image.
+  - We may want to attach some files to the container
+  - docker run --name {NAME} -v {PATH/TO/VOLUME}:{PATH/IN/CONTAINER} {IMAGE NAME}
+  - The path for the container workspace will be different and will require some research
 
-#### `docker stop`
+#### `docker stop {OPTIONS}`
 - This command stops a container
 
-#### `docker start`
+#### `docker start {OPTIONS}`
 - This commands start an exsisting container
+- We will want to use the `-i` flag in most cases. This allows us to see what is happening.
 
 ## Best Practices and Commands
 
-#### `docker ps`
+#### `docker ps {OPTIONS}`
 - This command will list containers being run currently
 - Adding the `-a` will list all containers 
 
-#### `docker rm {NAME}`
+#### `docker rm {OPTIONS}`
 - This will remove the container with the name entered
 
-#### `docker exec`
+#### `docker exec {OPTIONS}`
 - This is a powerful command that is useful when you need to enter into the container.
 - You may need to find the exact command your container needs to run.
+
+## VS Code and Docker
+- In order to use docker with VS code you need to download two extensions.
+  - "Docker" and "Remote - Containers"
+
+- Go to "Command Palette" to see options.

@@ -110,7 +110,7 @@ If you are running a Windows machine, you will probably experience an error when
 
 - Scroll down to step 4, and and click the hyperlink that will allow you to download the latest package.
 
-- Once you have gone through the download process, --RESTART YOUR COMPUTER.-- Docker Desktop should boot up just fine.
+- Once you have gone through the download process, --RESTART YOUR COMPUTER.-- Docker Desktop should boot up just fine. You will then be able to sign into Docker Desktop with your Docker ID.
 
 ### 3. Complete a Test Run
 

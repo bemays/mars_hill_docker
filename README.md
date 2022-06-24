@@ -106,7 +106,7 @@ CMD ["python3.10","iris.py"]
 
 If you are running a Windows machine, you will probably experience an error when trying to run Docker Desktop that will say something along the lines of "Docker Stopping..." To fix this issue, you will need to download the WSL2 linux kernel.
 
-- Navigate yourself to this link- https://docs.microsoft.com/en-us/windows/wsl/install
+- Navigate yourself to this link- https://docs.microsoft.com/en-us/windows/wsl/install-manual
 
 - Scroll down to step 4, and and click the hyperlink that will allow you to download the latest package.
 

@@ -93,3 +93,37 @@ CMD ["python3.10","iris.py"]
 - In order to use docker with VS code you need to download two extensions.
   - "Docker" and "Remote - Containers"
 
+# Docker Download Instructions
+
+### 1. Download Docker Desktop
+
+- Download Docker Desktop from https://www.docker.com/products/docker-desktop/ according to your computer's OS.
+
+- Sign up and create a Docker ID at https://hub.docker.com/signup
+    - Docker will send a message to the e-mail you used to sign up and will ask you to confirm your account.
+
+### 2. Download Linux Kernel (for Windows)
+
+If you are running a Windows machine, you will probably experience an error when trying to run Docker Desktop that will say something along the lines of "Docker Stopping..." To fix this issue, you will need to download the WSL2 linux kernel.
+
+- Navigate yourself to this link- https://docs.microsoft.com/en-us/windows/wsl/install
+
+- Scroll down to step 4, and and click the hyperlink that will allow you to download the latest package.
+
+- Once you have gone through the download process, --RESTART YOUR COMPUTER.-- Docker Desktop should boot up just fine.
+
+### 3. Complete a Test Run
+
+- To make your Docker Engine start running, open Docker Desktop.
+    - You can also make sure that the Docker logo in the tray (Windows) or menu bar (macOS) indicates that Docker is running
+
+- Navigate to your command line. Type "docker info". You should be provided with information concerning your version of Docker.
+
+- Let's pull an image. In your command line, type, "docker pull jarreed0/ml:irismlapp". This should pull the image that we are going to be working with in class.
+
+- To view your containers, type "docker images". It'll give an overview of the images you have available. REPOSITORY refers to the repository where this image originated. TAG refers to the version of this image.
+
+- To run a new image, the syntax is, "docker run -ti *REPOSITORY*:*TAG* bash". Essentially, you reference the repository and tag of the image you want to run. "-ti" is a flag that conveniently let's us play with the running image in the termina. To run our newest image, type "docker run -ti "jarreed0/ml:irismlapp bash". You are now running the image! Your command line directory should say something like, "root@6b2f6a2ebe11:/#".
+    - macOS computers with a silicon chip may receive a warning concerning the image platform. To fix this, type "docker run --platform linux/amd64 -ti "jarreed0/ml:irismlapp bash". This should fix the issue.
+
+- To stop the image from running, type "exit".
